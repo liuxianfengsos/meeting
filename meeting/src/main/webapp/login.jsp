@@ -10,6 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <title>CoolMeeting会议管理系统</title>
         <link rel="stylesheet" href="styles/common.css"/>
         <script type="text/javascript">
+        var checkmsg;
+        
         	function login(){
         		var flag = 1;
         		var username = document.getElementById("username").value;
@@ -26,7 +28,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         			pwdmsg.innerHTML = "<font color='red'>密码不能为空</font>";
         			flag = 0;
         		}
-        		
+        		//校验码为fail 则不允许登录
+        		if(checkmsg == "fail"){
+        			res.innerHTML = "<font color='red'>校验码错误</font>";
+        			flag = 0;
+        		}
         		
         		if(flag == 1){
         			var form1 = document.getElementById("form1");
@@ -35,6 +41,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		}
         	}
         </script>
+        <script type="text/javascript">
+        	var xmlHttp;
+        	
+        	function createXMLHttpRequest(){
+        		if(window.ActiveXObject){
+        			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        		}else if(window.XMLHttpRequest){
+        			xmlHttp = new XMLHttpRequest();
+        		}
+
+        	}
+        	
+        	
+        	function check(){
+        		 createXMLHttpRequest();
+        		 //alert(xmlHttp);
+        		 //获取输入的校验码
+        		 var rand = document.getElementById("rand").value;
+        		 var res = document.getElementById("res");
+        		 xmlHttp.open("get", "check?rand="+rand,true);
+        		 xmlHttp.send();
+        		 xmlHttp.onreadystatechange = function(){
+        		 	if(xmlHttp.readyState == 4){
+        		 		checkmsg = xmlHttp.responseText;
+        		 		//res.innerText = xmlHttp.responseText;
+        		 		res.innerHTML = "<font color='red'>"+xmlHttp.responseText+"</font>";
+        		 	}else{
+        		 		res.innerText = "wait......";
+        		 	}
+        		 }
+
+        	}
+        
+        </script>
+        
+        
     </head>
     <body>
     	<%
@@ -147,7 +189,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </select>
                                 </td>
                             </tr>
-                            
+                            <tr>
+                                <td>
+                                	<img alt="校验码" src="imageServlet">
+                                </td>
+                                <td>
+                                    <input id="rand" name="rand" type="text" onblur="check()" />
+                                </td>
+                                <td>
+                                	<div id="res"></div>
+                                </td>
+                            </tr>
                             
                             <tr>
                                 <td colspan="2" class="command">

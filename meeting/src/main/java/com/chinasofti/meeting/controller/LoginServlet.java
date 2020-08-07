@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//获取用户名和密码
+		//获取用户名和密码   
 		String username = request.getParameter("username");
 		String password = request.getParameter("pwd");
 		
@@ -50,6 +50,7 @@ public class LoginServlet extends HttpServlet {
 		int flag = service.login(username, password);
 
 		if(flag == 1) {
+			//TODO 访问登录控制，网站访问量统计
 			
 			//获取session对象
 			HttpSession  session = request.getSession();
@@ -66,7 +67,6 @@ public class LoginServlet extends HttpServlet {
 				request.getRequestDispatcher("admin/adminindex.jsp").forward(request, response);
 			}
 			if("2".equals(role)) {//员工页面
-				//TODO  LoginServlet 尚未完成 employee/employeeindex.jsp
 				request.getRequestDispatcher("employee/employeeindex.jsp").forward(request, response);
 			}
 			
