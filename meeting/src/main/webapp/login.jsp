@@ -206,7 +206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 	<input type="button" value="登录" onclick="login()" class="clickbutton"/>
                                 	<!-- <input type="submit" value="登录" class="clickbutton"/> -->
                                    <!--  <input type="submit" value="登录" class="clickbutton" onclick="window.location.href='notifiactions.html';"/> -->
-                                    <input type="button" value="返回" class="clickbutton" onclick="window.history.back();"/>
+                                    <input type="button" value="注册" class="clickbutton" onclick="window.location.href='viewAllDepartmentServlet?code=regist'"/>
                                 </td>
                             </tr>
                         </table>
