@@ -6,11 +6,20 @@
   <packaging>war</packaging>
   <name>meeting</name>
   <description/>
+  
   <properties>
     <webVersion>3.0</webVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  
   <dependencies>
+  <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>5.1.26</version>
+	</dependency>
+  
     <dependency>
       <groupId>org.glassfish</groupId>
       <artifactId>bean-validator</artifactId>
