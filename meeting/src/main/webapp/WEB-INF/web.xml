@@ -19,6 +19,11 @@
     <servlet-name>ViewAllDepartmentServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.ViewAllDepartmentServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ValidateUsernameServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.ValidateUsernameServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -38,6 +43,10 @@
   <servlet-mapping>
     <servlet-name>ViewAllDepartmentServlet</servlet-name>
     <url-pattern>/viewAllDepartmentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ValidateUsernameServlet</servlet-name>
+    <url-pattern>/validateUsernameServlet</url-pattern>
   </servlet-mapping>
 	
 	<welcome-file-list>
