@@ -13,7 +13,21 @@ public class Employee {
 	private String  role;   //1管理员   2员工
 	
 	
-	
+	public Employee() {
+	}
+	public Employee(Integer employeeid, String employeename, String username, String password, Integer departmentid,
+			String email, String phone, String status, String role) {
+		super();
+		this.employeeid = employeeid;
+		this.employeename = employeename;
+		this.username = username;
+		this.password = password;
+		this.departmentid = departmentid;
+		this.email = email;
+		this.phone = phone;
+		this.status = status;
+		this.role = role;
+	}
 	public Integer getEmployeeid() {
 		return employeeid;
 	}

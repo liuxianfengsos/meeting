@@ -36,7 +36,6 @@ public class EmployeeDao {
 				employee.setDepartmentid(rs.getInt("departmentid"));
 				employee.setPassword(rs.getString("password"));
 				employee.setRole(rs.getString("role"));
-				
 			}
 			
 		} catch (SQLException e) {
@@ -52,8 +51,11 @@ public class EmployeeDao {
 	public static void main(String[] args) {
 		EmployeeDao dao = new EmployeeDao();
 		//Employee emp = dao.selectByNamePwd("lilei", "123");
-		Employee employee = dao.selectByUserName("alibaba");
-		System.out.println(employee);
+		//Employee employee = dao.selectByUserName("alibaba");
+		Employee e = new Employee(null, "呼呼啦", "hhl", "123", 1, "@@@", "1232132132", "0", "2");
+		dao.insert(e);
+		
+		//System.out.println(employee);
 	}
 	/**
 	 *       根据用户名查找是否有对应的对象；
@@ -89,6 +91,34 @@ public class EmployeeDao {
 		}
 		
 		return employee;
+	}
+	
+	//向表employee中添加一行记录
+	public void insert(Employee employee) {
+		conn = ConnectionFactory.getConnection();
+		String sql = "insert into employee"
+				+ "(employeename,username,phone,email,status,departmentid,password,role)"
+				+ "values(?,?,?,?,?,?,?,?)";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, employee.getEmployeename());
+			pstmt.setString(2, employee.getUsername());
+			pstmt.setString(3, employee.getPhone());
+			pstmt.setString(4, employee.getEmail());
+			pstmt.setString(5, employee.getStatus());
+			pstmt.setInt(6, employee.getDepartmentid());
+			pstmt.setString(7, employee.getPassword());
+			pstmt.setString(8, employee.getRole());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, null);
+		}
+		
+		
 	}
 	
 }

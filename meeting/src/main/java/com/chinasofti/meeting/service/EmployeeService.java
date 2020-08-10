@@ -37,10 +37,30 @@ public class EmployeeService {
 		
 		return flag;
 	}
+	
+	//注册功能 用户名存在 注册失败 ，返回0     ；  成功返回1
+	
+	public int regist(Employee employee) {
+		int flag = 0;
+		//再次校验是否已经存在该用户
+		Employee e = dao.selectByUserName(employee.getUsername());
+		if(e==null) {
+			flag = 1;
+			dao.insert(employee);
+		}
+		
+		return flag;
+	}
+	
+	
+	
 	public static void main(String[] args) {
 		EmployeeService service = new EmployeeService();
-		int flag = service.login("lilei", "123");
-		System.out.println(flag);
+		Employee e = new Employee(null, "呼呼啦", "hhl1", "123", 1, "@@@", "1232132132", "0", "2");
+		int i = service.regist(e);
+		System.out.println(i);
+		//int flag = service.login("lilei", "123");
+		//System.out.println(flag);
 	}
 	
 }

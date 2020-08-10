@@ -102,17 +102,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		confirmMessage.innerHTML = "<font color='red'>两次输入的密码不一致</font>";
             		flag = 0;
             	}
-            	
+            	//jaxa返回false
             	if(passed == "false"){
             		flag = 0;
-            	}
-            	
-            	
-            	
+            	} 
+
             	if(flag == 1){
         			var form1 = document.getElementById("form1");
         			form1.method = "POST";
-        			form1.action = "regist";
+        			form1.action = "registServlet";
         			form1.submit();
         		}
             }
@@ -154,6 +152,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <fieldset>
                         <legend>员工信息</legend>
                         <table class="formtable" style="width:50%">
+                        	 <tr>
+                                <td>提示：</td>
+                                <td>${requestScope.msg }</td>
+                            </tr>
                             <tr>
                                 <td>姓名：</td>
                                 <td>
