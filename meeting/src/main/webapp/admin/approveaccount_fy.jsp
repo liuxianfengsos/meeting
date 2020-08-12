@@ -36,13 +36,12 @@
 	                        <td>${emp.phone }</td>
 	                        <td>${emp.email }</td>
 	                        <td>
-	                            <input type="button" class="clickbutton" value="通过"/>
-	                            <input type="button" class="clickbutton" value="删除"/>
+	                            <input type="button" onclick="window.location.href='approveServlet?employeeid=${emp.employeeid}&oper=yes'" class="clickbutton" value="通过"/>
+	                            <input type="button" class="clickbutton" value="未通过"/>
 	                        </td>
                     	</tr>
                     </c:forEach>
                    
-
                 </table>
                 <!-- 分页 --> 
                 <!-- 当前页是1 -->

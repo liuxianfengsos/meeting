@@ -85,9 +85,23 @@ public class PageDao {
 		return totalPage;
 	}
 	
+	//通过审核
+	public static void updateStatus(Integer employeeid, String status) {
+		String sql = "update employee set status=? where employeeid=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, status);
+			ps.setInt(2, employeeid);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void main(String[] args) {
-		int i = getTotalPage();
-		System.out.println(i);
-
+		//int i = getTotalPage();
+		//System.out.println(i);
+		updateStatus(43,"1");
 	}
 }
