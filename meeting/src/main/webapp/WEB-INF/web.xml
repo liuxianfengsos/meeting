@@ -27,6 +27,16 @@
     <servlet-name>RegistServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.RegistServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ViewAllEmployeesServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.ViewAllEmployeesServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ViewAllEmployeesFYServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.ViewAllEmployeesFYServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -56,6 +66,14 @@
   <servlet-mapping>
     <servlet-name>RegistServlet</servlet-name>
     <url-pattern>/registServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewAllEmployeesServlet</servlet-name>
+    <url-pattern>/admin/viewAllEmployeesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewAllEmployeesFYServlet</servlet-name>
+    <url-pattern>/admin/viewAllEmployeesFYServlet</url-pattern>
   </servlet-mapping>
 	
 	<welcome-file-list>

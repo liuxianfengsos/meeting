@@ -27,7 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="departments.html">部门管理</></li>
                         <li class="sidebar-menuitem"><a href="register.html">员工注册</a></li>
-                        <li class="sidebar-menuitem"><a href="approveaccount.html">注册审批</a></li>
+                   <!-- <li class="sidebar-menuitem"><a href="viewAllEmployeesServlet?code=approve" target="main">注册审批</a></li> -->
+                        <li class="sidebar-menuitem"><a href="viewAllEmployeesFYServlet" target="main">注册审批</a></li>
                         <li class="sidebar-menuitem"><a href="searchemployees.html">搜索员工</a></li>
                     </ul>
                 </div>
@@ -41,8 +42,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </ul>
                 </div>
             </div>
-           
-       
-        
+
     </body>
 </html>
