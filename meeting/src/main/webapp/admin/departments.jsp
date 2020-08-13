@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                        <td>${dept.departmentname }</td>
 		                        <td>
 		                            <a class="clickbutton" href="#">编辑</a>
-		                            <a class="clickbutton" href="#">删除</a>
+		                            <a class="clickbutton" href="addDeleteDepartmentServlet?code=delete&departmentid=${dept.departmentid }">删除</a>
 		                        </td>
 		                    </tr>
 	                    </c:forEach>

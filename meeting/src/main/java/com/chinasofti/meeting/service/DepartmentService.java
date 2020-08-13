@@ -19,4 +19,9 @@ public class DepartmentService {
 		dao.insert(departmentname);
 	}
 
+	public void deleteDepartment(Integer departmentid) {
+		dao.delete(departmentid);
+		
+	}
+
 }

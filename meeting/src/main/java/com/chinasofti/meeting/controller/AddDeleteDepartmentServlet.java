@@ -30,6 +30,11 @@ public class AddDeleteDepartmentServlet extends HttpServlet {
 		if(code != null && "add".equals(code)) {
 			service.addDepartment(departmentname);
 		}
+		//根据请求 删除部门
+		if(code != null && "delete".equals(code)) {
+			service.deleteDepartment(Integer.parseInt(request.getParameter("departmentid")));
+		}
+		
 		//跳转页面
 		request.getRequestDispatcher("viewAllDepartmentServlet?code=viewalldepartments").forward(request, response);
 		

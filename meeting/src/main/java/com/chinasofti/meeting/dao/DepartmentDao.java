@@ -47,8 +47,8 @@ public class DepartmentDao {
 		 * List<Department> departmentList = dao.selectAll(); for(Department
 		 * d:departmentList) { System.out.println(d); }
 		 */
-		dao.insert("lalalla");
-		
+		//dao.insert("lalalla");
+		dao.delete(8);
 		
 	}
 
@@ -60,6 +60,26 @@ public class DepartmentDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, departmentname);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, null);
+		}
+
+	}
+	//根据id删除部门
+	public void delete(Integer departmentid) {
+		
+		conn = ConnectionFactory.getConnection();
+		String sql = "delete from department where departmentid=?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, departmentid);
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
