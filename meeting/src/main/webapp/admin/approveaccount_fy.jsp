@@ -37,7 +37,7 @@
 	                        <td>${emp.email }</td>
 	                        <td>
 	                            <input type="button" onclick="window.location.href='approveServlet?employeeid=${emp.employeeid}&oper=yes'" class="clickbutton" value="通过"/>
-	                            <input type="button" class="clickbutton" value="未通过"/>
+	                            <input type="button" onclick="window.location.href='approveServlet?employeeid=${emp.employeeid}&oper=no'"    class="clickbutton" value="未通过"/>
 	                        </td>
                     	</tr>
                     </c:forEach>
@@ -56,7 +56,7 @@
                 	<a href="viewAllEmployeesFYServlet?currentPageNo=${requestScope.currentpageNo-1 }">上一页</a>
                 </c:if>
                 
-                <!-- 当前页不是首页  也不是末页     2:16  -->
+                <!-- 当前页不是首页  也不是末页    -->
                 <c:if test="${currentpageNo>1 && currentpageNo<totalPage }">
                 	<a href="viewAllEmployeesFYServlet?currentPageNo=1 ">首页</a>
                 	<a href="viewAllEmployeesFYServlet?currentPageNo=${requestScope.currentpageNo-1 }">上一页</a>

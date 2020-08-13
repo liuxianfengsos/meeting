@@ -53,7 +53,7 @@ public class PageDao {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}finally {
 			//ConnectionFactory.closeConnection(conn, ps, rs);
@@ -78,7 +78,7 @@ public class PageDao {
 				            //   2+1 = 3  
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
