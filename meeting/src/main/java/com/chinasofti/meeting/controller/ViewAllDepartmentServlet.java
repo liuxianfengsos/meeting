@@ -29,10 +29,14 @@ public class ViewAllDepartmentServlet extends HttpServlet {
 		request.setAttribute("departmentList", departmentList);
 		
 		String code = request.getParameter("code");
+		//为注册页面提供部门列表
 		if(code!=null && "regist".equals(code)) {
 			request.getRequestDispatcher("register.jsp").forward(request, response);
 		}
 		
+		if("viewalldepartments".equals(code)) {
+			request.getRequestDispatcher("departments.jsp").forward(request, response);
+		}
 		
 	}
 

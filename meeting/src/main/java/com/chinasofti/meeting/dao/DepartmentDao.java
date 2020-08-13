@@ -43,9 +43,34 @@ public class DepartmentDao {
 	
 	public static void main(String[] args) {
 		DepartmentDao dao = new DepartmentDao();
-		List<Department> departmentList = dao.selectAll();
-		for(Department d:departmentList) {
-			System.out.println(d);
-		}
+		/*
+		 * List<Department> departmentList = dao.selectAll(); for(Department
+		 * d:departmentList) { System.out.println(d); }
+		 */
+		dao.insert("lalalla");
+		
+		
 	}
+
+	public void insert(String departmentname) {
+		conn = ConnectionFactory.getConnection();
+		String sql = "insert into department (departmentname) value (?)";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, departmentname);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, null);
+		}
+
+	}
+	
+	
+	
 }

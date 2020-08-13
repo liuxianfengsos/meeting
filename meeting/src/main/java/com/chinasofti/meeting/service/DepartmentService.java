@@ -14,4 +14,9 @@ public class DepartmentService {
 		return dao.selectAll();
 	}
 
+	public void addDepartment(String departmentname) {
+		
+		dao.insert(departmentname);
+	}
+
 }
