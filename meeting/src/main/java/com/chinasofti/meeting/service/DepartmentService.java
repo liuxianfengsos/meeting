@@ -24,4 +24,8 @@ public class DepartmentService {
 		
 	}
 
+	public void updateNameById(int departmentid, String departmentname) {
+		dao.updateNameById(departmentid,departmentname);
+	}
+
 }

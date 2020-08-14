@@ -34,6 +34,12 @@ public class AddDeleteDepartmentServlet extends HttpServlet {
 		if(code != null && "delete".equals(code)) {
 			service.deleteDepartment(Integer.parseInt(request.getParameter("departmentid")));
 		}
+		//修改
+		if(code != null && "edit".equals(code)) {
+			service.updateNameById(Integer.parseInt(request.getParameter("departmentid")),departmentname);
+			
+		}
+		
 		
 		//跳转页面
 		request.getRequestDispatcher("viewAllDepartmentServlet?code=viewalldepartments").forward(request, response);

@@ -90,6 +90,23 @@ public class DepartmentDao {
 		}
 
 	}
+
+	public void updateNameById(int departmentid, String departmentname) {
+		conn = ConnectionFactory.getConnection();
+		String sql = "update department set departmentname=? where departmentid=?";
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, departmentname);
+			pstmt.setInt(2, departmentid);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException("编辑部门失败");
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, null);
+		}
+	}
 	
 	
 	
