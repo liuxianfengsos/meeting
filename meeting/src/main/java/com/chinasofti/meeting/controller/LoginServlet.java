@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 			
 			//将个人信息存放到session中
 			session.setAttribute("employeename", loginedEmployee.getEmployeename());
-			
+			session.setAttribute("employeeid", loginedEmployee.getEmployeeid());
 			
 			if("1".equals(role)) {//管理员
 				request.getRequestDispatcher("admin/adminindex.jsp").forward(request, response);
