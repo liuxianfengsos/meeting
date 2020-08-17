@@ -30,11 +30,11 @@ public class ViewMyBookingServlet extends HttpServlet {
 
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("========reservationistid===");
+		//System.out.println("========reservationistid===");
 		//获取预定者（登陆者）的id
 		HttpSession session = request.getSession();
 		Integer reservationistid =  (Integer)session.getAttribute("employeeid");
-		System.out.println("reservationistid==="+reservationistid);
+		//System.out.println("reservationistid==="+reservationistid);
 		//创建会议的对象  会议室
 		MeetingService service = new MeetingService();
 		MeetingRoomService roomService = new MeetingRoomService();
@@ -56,7 +56,7 @@ public class ViewMyBookingServlet extends HttpServlet {
 		for(Entry<Meeting, String> e:ent) {
 			Meeting meeting = e.getKey();
 			String roomname = e.getValue();
-			System.out.println(meeting.getRoomid()+"===="+roomname);
+			//System.out.println(meeting.getRoomid()+"===="+roomname);
 		}
 		
 		request.setAttribute("map", map);

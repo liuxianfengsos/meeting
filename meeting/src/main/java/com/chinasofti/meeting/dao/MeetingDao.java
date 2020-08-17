@@ -54,10 +54,51 @@ public class MeetingDao {
 	
 	public static void main(String[] args) {
 		MeetingDao dao = new MeetingDao();
-		List<Meeting> l = dao.selectAllMeetingsByReserId(8);
-		for(Meeting m:l) {
-			System.out.println(m);
+		//List<Meeting> l = dao.selectAllMeetingsByReserId(8);
+		/*
+		 * for(Meeting m:l) { System.out.println(m); }
+		 */
+		
+		Meeting m = dao.selectById(28);
+		System.out.println(m);
+	}
+
+	public Meeting selectById(Integer meetingid) {
+		conn = ConnectionFactory.getConnection();
+		Meeting meeting = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from meeting where meetingid="+meetingid;
+		try {
+			st = conn.prepareStatement(sql);
+			rs = st.executeQuery();
+			
+			while(rs.next()){
+				meeting = new Meeting();
+				meeting.setMeetingid(rs.getInt("meetingid"));
+				meeting.setMeetingname(rs.getString("meetingname"));
+				meeting.setRoomid(rs.getInt("roomid"));
+				meeting.setReservationistid(rs.getInt("reservationistid"));
+				meeting.setNumberofparticipants(rs.getInt("numberofparticipants"));
+				meeting.setStarttime(rs.getTimestamp("starttime"));
+				meeting.setEndtime(rs.getTimestamp("endtime"));
+				meeting.setReservationtime(rs.getTimestamp("reservationtime"));
+				meeting.setCanceledtime(rs.getTimestamp("canceledtime"));
+				meeting.setDescription(rs.getString("description"));
+				meeting.setStatus(rs.getString("status"));				
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, st, rs);
 		}
+		
+		
+		
+		return meeting;
 	}
 	
 }
