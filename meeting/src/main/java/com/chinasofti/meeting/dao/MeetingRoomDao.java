@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.chinasofti.meeting.util.ConnectionFactory;
 
@@ -52,6 +54,37 @@ public class MeetingRoomDao {
 		MeetingRoomDao dao = new MeetingRoomDao();
 		MeetingRoom m = dao.selectByRoomId(8);
 		System.out.println(m);
+	}
+
+	public List<MeetingRoom> selectAllMeetingRooms() {
+		conn = ConnectionFactory.getConnection();
+		List<MeetingRoom> list = new ArrayList<MeetingRoom>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from meetingroom ";
+		MeetingRoom meetingroom = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				meetingroom = new MeetingRoom();
+				meetingroom.setRoomid(Integer.parseInt(rs.getString("roomid")));
+				meetingroom.setRoomnum(Integer.parseInt(rs.getString("roomnum")));
+				meetingroom.setCapacity(Integer.parseInt(rs.getString("capacity")));
+				meetingroom.setRoomname(rs.getString("roomname"));
+				meetingroom.setStatus(rs.getString("status"));
+				meetingroom.setDesciption(rs.getString("description"));
+				list.add(meetingroom);
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, rs);
+		}
+		
+		return list;
 	}
 
 }

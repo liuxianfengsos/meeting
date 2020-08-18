@@ -57,6 +57,16 @@
     <servlet-name>CancelMeetingServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.CancelMeetingServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ViewAllMeetingRoomsServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.ViewAllMeetingRoomsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ViewOneMeetingroomServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.ViewOneMeetingroomServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -131,6 +141,14 @@
   <servlet-mapping>
     <servlet-name>CancelMeetingServlet</servlet-name>
     <url-pattern>/admin/cancelMeetingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewAllMeetingRoomsServlet</servlet-name>
+    <url-pattern>/admin/viewAllMeetingRoomsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewOneMeetingroomServlet</servlet-name>
+    <url-pattern>/admin/viewOneMeetingroomServlet</url-pattern>
   </servlet-mapping>
 
 	

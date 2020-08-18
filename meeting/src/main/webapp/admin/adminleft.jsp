@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="sidebar-grouptitle">会议预定</div>
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="addmeetingroom.html">添加会议室</a></li>
-                        <li class="sidebar-menuitem"><a href="meetingrooms.html">查看会议室</a></li>
+                        <li class="sidebar-menuitem"><a href="viewAllMeetingRoomsServlet" target="main">查看会议室</a></li>
                         <li class="sidebar-menuitem"><a href="bookmeeting.html">预定会议</a></li>
                         <li class="sidebar-menuitem"><a href="searchmeetings.html">搜索会议</a></li>
                     </ul>
