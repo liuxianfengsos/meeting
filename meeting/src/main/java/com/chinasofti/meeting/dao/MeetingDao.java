@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,6 +100,30 @@ public class MeetingDao {
 		
 		
 		return meeting;
+	}
+	/**
+	 * 
+	 * @param meetingid 会议id
+	 * @param flag 会议注销标识
+	 * @param timestamp 
+	 */
+	public  void update(Integer meetingid, String flag, Timestamp cancledtime) {
+		
+		conn = ConnectionFactory.getConnection();
+		String sql = "update meeting set status=?,canceledtime=? where meetingid="+meetingid;
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, flag);
+			pstmt.setTimestamp(2, cancledtime);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, null);
+		}
+
 	}
 	
 }

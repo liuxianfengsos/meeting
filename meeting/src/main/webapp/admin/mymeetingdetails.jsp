@@ -158,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="content-nav">
                     会议预定 > 修改会议预定
                 </div>
-                <form>
+                <form action="cancelMeetingServlet" method="post">
                     <fieldset>
                         <legend>会议信息</legend>
                         <table class="formtable">
@@ -211,8 +211,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </td>
                             </tr>
                             <tr>
+                            	<!-- 
+                            	完成会议撤销：
+                            	点击撤销按钮？，-- 撤销servlet？  -- 完成撤销会议 ？   --跳转页面？  -->
                                 <td class="command" colspan="2">
-                                    <input type="button" class="clickbutton" value="撤销会议" onclick="window.location.href='cancelmeeting.html';"/>
+                                	<input type="hidden" name="meetingid" value="${requestScope.meeting.meetingid }">
+                                	
+                                    <input type="submit" class="clickbutton" value="撤销会议"/>
                                     <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
                                 </td>
                             </tr>

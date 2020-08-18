@@ -53,6 +53,11 @@
     <servlet-name>ViewbookingDtailServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.ViewbookingDtailServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CancelMeetingServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.CancelMeetingServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -122,6 +127,10 @@
   <servlet-mapping>
     <servlet-name>ViewbookingDtailServlet</servlet-name>
     <url-pattern>/admin/viewbookingDtailServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CancelMeetingServlet</servlet-name>
+    <url-pattern>/admin/cancelMeetingServlet</url-pattern>
   </servlet-mapping>
 
 	
