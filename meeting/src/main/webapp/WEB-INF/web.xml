@@ -65,6 +65,11 @@
     <servlet-name>ViewOneMeetingroomServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.ViewOneMeetingroomServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UpdateMeetingroomServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.UpdateMeetingroomServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -149,6 +154,10 @@
   <servlet-mapping>
     <servlet-name>ViewOneMeetingroomServlet</servlet-name>
     <url-pattern>/admin/viewOneMeetingroomServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateMeetingroomServlet</servlet-name>
+    <url-pattern>/admin/updateMeetingroomServlet</url-pattern>
   </servlet-mapping>
 
 	

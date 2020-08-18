@@ -19,4 +19,9 @@ public class MeetingRoomService {
 		return meetingroomdao.selectAllMeetingRooms();
 	}
 
+	public void updateMeetingroom(MeetingRoom room) {
+		meetingroomdao.updateMeetingroom(room);
+		
+	}
+
 }

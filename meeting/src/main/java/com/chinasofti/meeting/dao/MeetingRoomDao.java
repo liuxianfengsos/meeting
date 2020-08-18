@@ -87,4 +87,28 @@ public class MeetingRoomDao {
 		return list;
 	}
 
+	public void updateMeetingroom(MeetingRoom room) {
+		conn = ConnectionFactory.getConnection();
+		PreparedStatement pstmt = null;
+		String sql = "update meetingroom set roomnum=?,roomname=?"
+				+ ",capacity=?,status=?,description=? where roomid="+room.getRoomid();
+		
+		System.out.println("dao"+room);
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, room.getRoomnum());
+			pstmt.setString(2, room.getRoomname());
+			pstmt.setInt(3, room.getCapacity());
+			pstmt.setString(4, room.getStatus());
+			pstmt.setString(5, room.getDesciption());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, null);
+		}
+		
+	}
+
 }
