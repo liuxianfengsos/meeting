@@ -73,6 +73,11 @@
     <servlet-name>AddMeetingroomServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.AddMeetingroomServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.Logout</servlet-class>
+  </servlet>
+
 
 
 
@@ -167,6 +172,10 @@
   <servlet-mapping>
     <servlet-name>AddMeetingroomServlet</servlet-name>
     <url-pattern>/admin/addMeetingroomServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/admin/logout</url-pattern>
   </servlet-mapping>
 
 	
