@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import com.chinasofti.meeting.service.MeetingRoomService;
 import com.chinasofti.meeting.service.MeetingService;
 import com.chinasofti.meeting.vo.Meeting;
+import com.chinasofti.meeting.vo.MeetingRoom;
 
 public class ViewMyBookingServlet extends HttpServlet {
 
@@ -34,6 +35,7 @@ public class ViewMyBookingServlet extends HttpServlet {
 		//获取预定者（登陆者）的id
 		HttpSession session = request.getSession();
 		Integer reservationistid =  (Integer)session.getAttribute("employeeid");
+		System.out.println("ViewMyBookingServlet....."+reservationistid);
 		//System.out.println("reservationistid==="+reservationistid);
 		//创建会议的对象  会议室
 		MeetingService service = new MeetingService();
@@ -44,7 +46,9 @@ public class ViewMyBookingServlet extends HttpServlet {
 		List<String> rommsNameList = new ArrayList<String>();
 		
 		for(Meeting m:meetingsList) {
-			rommsNameList.add(roomService.viewOnMeetingRoom(m.getRoomid()).getRoomname());
+			//System.out.println("ViewMyBookingServlet...获取会议室..."+roomService.viewOnMeetingRoom(m.getRoomid()).getRoomname());
+			 MeetingRoom room = roomService.viewOnMeetingRoom(m.getRoomid());
+			rommsNameList.add(room.getRoomname());
 		}
 		
 		Map<Meeting,String> map = new HashMap<Meeting,String>();

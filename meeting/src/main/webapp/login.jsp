@@ -157,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	<tr>
                                 <td>登录信息:</td>
                                 <td>
-                                    <font color='red'>${requestScope.msg }</font>
+                                    <font color='red'>${msg }</font>
                                 </td>
                             </tr>
                         
