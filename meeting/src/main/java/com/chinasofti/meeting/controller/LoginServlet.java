@@ -3,6 +3,7 @@ package com.chinasofti.meeting.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -50,7 +51,21 @@ public class LoginServlet extends HttpServlet {
 		int flag = service.login(username, password);
 
 		if(flag == 1) {
-			//TODO 访问登录控制，网站访问量统计
+			
+			//获取上下文
+			ServletContext ctxt = this.getServletContext();
+			//判断上下文中是否有访问次数的数据  没有则初始为0
+			int visitcount;
+			if(ctxt.getAttribute("visitcount") == null) {
+				visitcount = 0;
+			}else {
+				visitcount = Integer.parseInt(ctxt.getAttribute("visitcount").toString());
+			}
+			//成功登录后 访问数量自增一
+			visitcount++;
+			//保存到上下文中去
+			ctxt.setAttribute("visitcount", visitcount);
+			
 			
 			//获取session对象
 			HttpSession  session = request.getSession();

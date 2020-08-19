@@ -15,8 +15,11 @@
             </div>
             <div class="header-quicklink">
                 欢迎您，<strong>${sessionScope.employeename }</strong>
-                <a href="changepassword.html">[修改密码]</a>
+               <!--  <a href="changepassword.html">[修改密码]</a> -->
                  <a href="logout" target="_parent">[退出]</a>
+            </div>
+            <div class="header-quicklink">
+            	访问次数:[<font color='red'>${applicationScope.visitcount }</font>]
             </div>
         </div>
     </body>
