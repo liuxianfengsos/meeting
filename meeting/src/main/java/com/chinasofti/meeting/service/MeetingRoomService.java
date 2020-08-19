@@ -24,4 +24,9 @@ public class MeetingRoomService {
 		
 	}
 
+	public void addMeetingroom(MeetingRoom room) {
+		meetingroomdao.insert(room);
+		
+	}
+
 }

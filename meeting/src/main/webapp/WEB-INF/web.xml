@@ -69,6 +69,11 @@
     <servlet-name>UpdateMeetingroomServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.UpdateMeetingroomServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AddMeetingroomServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.AddMeetingroomServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -158,6 +163,10 @@
   <servlet-mapping>
     <servlet-name>UpdateMeetingroomServlet</servlet-name>
     <url-pattern>/admin/updateMeetingroomServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddMeetingroomServlet</servlet-name>
+    <url-pattern>/admin/addMeetingroomServlet</url-pattern>
   </servlet-mapping>
 
 	

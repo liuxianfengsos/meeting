@@ -111,4 +111,27 @@ public class MeetingRoomDao {
 		
 	}
 
+	public void insert(MeetingRoom room) {
+		conn = ConnectionFactory.getConnection();
+		PreparedStatement pstmt = null;
+		String sql = "insert into meetingroom "
+				+ "(roomnum,roomname,capacity,status,description)"
+				+ "values(?,?,?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, room.getRoomnum());
+			pstmt.setString(2, room.getRoomname());
+			pstmt.setInt(3, room.getCapacity());
+			pstmt.setString(4, room.getStatus());
+			pstmt.setString(5, room.getDesciption());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, null);
+		}
+		
+		
+	}
+
 }
