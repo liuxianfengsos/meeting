@@ -112,6 +112,11 @@
     <servlet-name>ViewMymeetingServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.ViewMymeetingServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ViewMymeetingDetailServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.ViewMymeetingDetailServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -216,6 +221,10 @@
   <servlet-mapping>
     <servlet-name>ViewMymeetingServlet</servlet-name>
     <url-pattern>/admin/viewMymeetingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewMymeetingDetailServlet</servlet-name>
+    <url-pattern>/admin/viewMymeetingDetailServlet</url-pattern>
   </servlet-mapping>
 
 	

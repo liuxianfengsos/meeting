@@ -31,9 +31,9 @@ public class ViewMymeetingServlet extends HttpServlet {
 		//获取当前登陆者的信息
 		HttpSession session = request.getSession();  
 		String empid = session.getAttribute("employeeid").toString();
-		System.out.println("empid..........."+empid);
+		//System.out.println("empid..........."+empid);
 		Integer employeeid = Integer.parseInt(empid);
-		System.out.println("employeeid..........."+employeeid);
+		//System.out.println("employeeid..........."+employeeid);
 		MeetingService service = new MeetingService();
 		//获取会议信息
 		List<Meeting> meetingsList = service.viewMymeetingInfo(employeeid);
