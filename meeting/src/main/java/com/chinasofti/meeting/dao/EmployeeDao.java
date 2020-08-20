@@ -151,20 +151,60 @@ public class EmployeeDao {
 	}
 	
 	
+	
+		
+		
+		//System.out.println(employee);
+	//}
+
+
+	public Employee selectById(int reservationistid) {
+		conn = ConnectionFactory.getConnection();
+		Employee employee = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from employee where employeeid="+reservationistid;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				employee = new Employee();
+				employee.setEmployeeid(rs.getInt("employeeid"));
+				employee.setEmployeename(rs.getString("employeename"));
+				employee.setUsername(rs.getString("username"));
+				employee.setPhone(rs.getString("phone"));
+				employee.setEmail(rs.getString("email"));
+				employee.setStatus(rs.getString("status"));
+				employee.setDepartmentid(rs.getInt("departmentid"));
+				employee.setPassword(rs.getString("password"));
+				employee.setRole(rs.getString("role"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, rs);
+		}
+		
+
+		return employee;
+	}
 	public static void main(String[] args) {
 		EmployeeDao dao = new EmployeeDao();
 		//Employee emp = dao.selectByNamePwd("lilei", "123");
 		//Employee employee = dao.selectByUserName("alibaba");
 		//Employee e = new Employee(null, "呼呼啦", "hhl", "123", 1, "@@@", "1232132132", "0", "2");
 		//dao.insert(e);
-		List<Employee> list = dao.selectAllEmployee();
+		//List<Employee> list = dao.selectAllEmployee();
 		
-		for(Employee emp:list) {
+		/*for(Employee emp:list) {
 			
 			System.out.println(emp);
-		}
-		
-		
-		//System.out.println(employee);
+		}*/
+		Employee e = dao.selectById(8);
+		System.out.println(e);
 	}
+	
 }

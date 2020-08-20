@@ -4,11 +4,14 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import com.chinasofti.meeting.dao.MeetingDao;
+import com.chinasofti.meeting.dao.MeetingParticipantsDao;
 import com.chinasofti.meeting.vo.Meeting;
 
 public class MeetingService {
 
 	private MeetingDao meetingDao = new MeetingDao();
+	
+	private MeetingParticipantsDao parDao = new MeetingParticipantsDao();
 	
 	public List<Meeting> viewMyBookingInfo(Integer reservationistid) {
 		
@@ -26,6 +29,11 @@ public class MeetingService {
 	public void cancelMeeting(Integer meetingid) {
 		meetingDao.update(meetingid,"1",new Timestamp(System.currentTimeMillis()));
 		
+	}
+
+	public List<Meeting> viewMymeetingInfo(Integer employeeid) {
+		
+		return parDao.selectAllMeetingByPartId(employeeid);
 	}
 
 }

@@ -108,6 +108,11 @@
     <servlet-name>Logout</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.Logout</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ViewMymeetingServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.ViewMymeetingServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -207,6 +212,10 @@
   <servlet-mapping>
     <servlet-name>Logout</servlet-name>
     <url-pattern>/admin/logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewMymeetingServlet</servlet-name>
+    <url-pattern>/admin/viewMymeetingServlet</url-pattern>
   </servlet-mapping>
 
 	
