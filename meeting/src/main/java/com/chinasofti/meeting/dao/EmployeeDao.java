@@ -191,6 +191,42 @@ public class EmployeeDao {
 
 		return employee;
 	}
+	
+
+	public List<Employee> selectEmployeesByDept(Integer departmentid) {
+		conn = ConnectionFactory.getConnection();
+		Employee employee = null;
+		List<Employee> employeesList = new ArrayList<Employee>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from employee where departmentid="+departmentid;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				employee = new Employee();
+				employee.setEmployeeid(rs.getInt("employeeid"));
+				employee.setEmployeename(rs.getString("employeename"));
+				employee.setUsername(rs.getString("username"));
+				employee.setPhone(rs.getString("phone"));
+				employee.setEmail(rs.getString("email"));
+				employee.setStatus(rs.getString("status"));
+				employee.setDepartmentid(rs.getInt("departmentid"));
+				employee.setPassword(rs.getString("password"));
+				employee.setRole(rs.getString("role"));
+				employeesList.add(employee);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, rs);
+		}
+
+		return employeesList;
+	}
 	public static void main(String[] args) {
 		EmployeeDao dao = new EmployeeDao();
 		//Employee emp = dao.selectByNamePwd("lilei", "123");
@@ -203,8 +239,12 @@ public class EmployeeDao {
 			
 			System.out.println(emp);
 		}*/
-		Employee e = dao.selectById(8);
-		System.out.println(e);
+		List<Employee> l = dao.selectEmployeesByDept(1);
+		
+		for(Employee emp:l) {
+			
+			System.out.println(emp);
+		}
 	}
-	
+
 }

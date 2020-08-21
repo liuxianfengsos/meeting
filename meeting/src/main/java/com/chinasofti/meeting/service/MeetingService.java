@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.chinasofti.meeting.dao.MeetingDao;
 import com.chinasofti.meeting.dao.MeetingParticipantsDao;
+import com.chinasofti.meeting.vo.Employee;
 import com.chinasofti.meeting.vo.Meeting;
 
 public class MeetingService {
@@ -34,6 +35,19 @@ public class MeetingService {
 	public List<Meeting> viewMymeetingInfo(Integer employeeid) {
 		
 		return parDao.selectAllMeetingByPartId(employeeid);
+	}
+	//会议定制
+	public void bookMeeting(Meeting meeting, List<Integer> employeeidList) {
+		//保存会议
+		Integer meetingid = meetingDao.insert(meeting);
+		//System.out.println();
+		//保存该会议相关人员  meetingid--employeeid
+		for(Integer employeeid :employeeidList) {
+			System.out.println(employeeid+","+meetingid);
+			parDao.insert(meetingid,employeeid);
+		}
+		
+		
 	}
 
 }

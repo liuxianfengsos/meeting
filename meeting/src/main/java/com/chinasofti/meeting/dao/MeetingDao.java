@@ -125,5 +125,43 @@ public class MeetingDao {
 		}
 
 	}
+
+	public Integer insert(Meeting meeting) {
+		Integer meetingid = 0;
+		conn = ConnectionFactory.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "insert into meeting "
+				+ "(meetingname,roomid,reservationistid,numberofparticipants,"
+				+ "starttime,endtime,reservationtime,canceledtime,description,status) "
+				+ "values(?,?,?,?,?,?,?,?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, meeting.getMeetingname());
+			pstmt.setInt(2, meeting.getRoomid());
+			pstmt.setInt(3, meeting.getReservationistid());
+			pstmt.setInt(4, meeting.getNumberofparticipants());
+			pstmt.setTimestamp(5, meeting.getStarttime());
+			pstmt.setTimestamp(6, meeting.getEndtime());
+			pstmt.setTimestamp(7, meeting.getReservationtime());
+			pstmt.setTimestamp(8, meeting.getCanceledtime());
+			pstmt.setString(9, meeting.getDescription());
+			pstmt.setString(10, meeting.getStatus());
+			pstmt.executeUpdate();
+			
+			rs = pstmt.executeQuery("select max(meetingid) from meeting");
+			if(rs.next()) {
+				meetingid = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ConnectionFactory.closeConnection(conn, pstmt, rs);
+		}
+		
+		return meetingid;
+	}
 	
 }

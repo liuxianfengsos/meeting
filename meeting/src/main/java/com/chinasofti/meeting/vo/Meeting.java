@@ -19,6 +19,25 @@ public class Meeting {
 	private String status="0";
 	
 	
+	public Meeting(String meetingname, int roomid, int reservationistid, int numberofparticipants,
+			Timestamp starttime, Timestamp endtime, Timestamp reservationtime, Timestamp canceledtime,
+			String description, String status) {
+	
+		this.meetingname = meetingname;
+		this.roomid = roomid;
+		this.reservationistid = reservationistid;
+		this.numberofparticipants = numberofparticipants;
+		this.starttime = starttime;
+		this.endtime = endtime;
+		this.reservationtime = reservationtime;
+		this.canceledtime = canceledtime;
+		this.description = description;
+		this.status = status;
+	}
+	public Meeting() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getMeetingid() {
 		return meetingid;
 	}

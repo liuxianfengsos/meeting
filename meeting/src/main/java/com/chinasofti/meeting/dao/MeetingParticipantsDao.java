@@ -92,14 +92,39 @@ public class MeetingParticipantsDao {
 		return meetingList;
 	}
 	
-	public static void main(String[] args) {
-		MeetingParticipantsDao dao = new MeetingParticipantsDao();
-		//List<Employee> list = dao.selectAllEmployeesByMeetingid(28);
-		List<Meeting> list = dao.selectAllMeetingByPartId(8);
-		for(Meeting e:list){
-			System.out.println(e);
+	
+
+	public void insert(Integer meetingid, Integer employeeid) {
+		conn = ConnectionFactory.getConnection();
+		PreparedStatement pstmt = null;
+		String sql = "insert into meetingparticipants values(?,?)";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, meetingid);
+			pstmt.setInt(2, employeeid);
+			pstmt.executeUpdate();
+			System.out.println("会议人员存储成功.........");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, null);
 		}
 		
 	}
 	
+	
+	public static void main(String[] args) {
+		MeetingParticipantsDao dao = new MeetingParticipantsDao();
+		//List<Employee> list = dao.selectAllEmployeesByMeetingid(28);
+		//List<Meeting> list = dao.selectAllMeetingByPartId(8);
+		/*
+		 * for(Meeting e:list){ System.out.println(e); }
+		 */
+		
+		//dao.insert();
+		
+	}
+
+
 }

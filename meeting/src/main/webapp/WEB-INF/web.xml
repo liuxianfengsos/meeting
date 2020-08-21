@@ -116,6 +116,16 @@
     <servlet-name>ViewMymeetingDetailServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.ViewMymeetingDetailServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>BookMeetingServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.BookMeetingServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SelectEmployeesOfDeptServle</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.SelectEmployeesOfDeptServle</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -225,6 +235,14 @@
   <servlet-mapping>
     <servlet-name>ViewMymeetingDetailServlet</servlet-name>
     <url-pattern>/admin/viewMymeetingDetailServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BookMeetingServlet</servlet-name>
+    <url-pattern>/admin/bookMeetingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SelectEmployeesOfDeptServle</servlet-name>
+    <url-pattern>/admin/selectEmployeesOfDeptServle</url-pattern>
   </servlet-mapping>
 
 	
